@@ -1,0 +1,24 @@
+/*DEMONSTRATE HOW TO BACK UP A DATABASE AND RESTORE IT IN CASE OF FAILURE.*/
+
+/*Backup the Data*/
+
+-- Backup command (run in terminal/command line)
+mysqldump -u root -p database_name source_table > source_table_backup.sql
+
+ /*Simulate Data Loss*/
+
+-- Delete all data from source_table
+DELETE FROM source_table;
+
+-- Verify that source_table is empty
+SELECT * FROM source_table;
+
+/*Restore the Data*/
+
+-- Restore command (run in terminal/command line)
+mysql -u root -p database_name < source_table_backup.sql
+
+-- Check data in source_table
+SELECT * FROM source_table;
+
+
